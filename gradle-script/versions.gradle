@@ -1,0 +1,8 @@
+ext {
+    kotlinVersion = '1.5.30'
+    ktlintVersion = '0.43.0'
+
+    voskVersion = '0.3.29'
+    jnaVersion = '5.10.0'
+    gsonVersion = '2.9.0'
+}

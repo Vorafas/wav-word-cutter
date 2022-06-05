@@ -1,0 +1,47 @@
+buildscript {
+    apply from: "${project.rootDir}/gradle-script/versions.gradle"
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "$kotlinVersion"
+    id 'application'
+}
+
+apply from: "${project.rootDir}/gradle-script/ktlint.gradle"
+
+group = 'me.elshad'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://alphacephei.com/maven/'
+    }
+}
+
+dependencies {
+    ktlint "com.pinterest:ktlint:$ktlintVersion"
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    implementation "net.java.dev.jna:jna:$jnaVersion"
+    implementation "com.alphacephei:vosk:$voskVersion"
+}
+
+test {
+    useJUnit()
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+application {
+    mainClassName = 'MainKt'
+}
